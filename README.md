@@ -33,3 +33,8 @@ large impact on framerate when it adjusts itself.
 
 For the best tile updating performance, be sure to compile with optimizations enabled - Swift
 is not so swift without them.
+
+# Tilesheets
+
+The project currently includes a couple of basic tilesheet image files. I have unfortunately forgotten the origin of them. If you know, let me know.
+The larger graphical sheet came from [Kenny](http://kenney.nl/assets/roguelike-rpg-pack).
