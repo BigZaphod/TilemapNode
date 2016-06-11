@@ -18,8 +18,13 @@ In addition to the per-tile features, it also supports loading tilesheets that h
 spacing between tiles, and tiles positioned at offsets from the origin. There is even support
 for old-school color transparancy masking.
 
-On my first-gen iPad Pro, I can update well over 10,000 tiles per frame on maps on the order
-of 4096x4096 tiles. Your results may vary.
+On my first-gen iPad Pro, I can update well over 10,000 tiles per frame even on maps of
+4096x4096 tiles. Your results may vary.
+
+# Missing Features
+
+* No loading functions for things like Tiled maps, although this doesn't seem very difficult.
+* No function to "lift" a tile out of the map and into a standalone SKSprite for special effects and whatnot. This also doesn't seem like it'd be very hard.
 
 # Notes
 
