@@ -10,7 +10,7 @@ not nearly so well on anything older than that due to the shader relying on depe
 reads which older mobile GPUs are terrible at. As far as I can tell, I cannot work around this
 limitation using this technique due in part to the design of SpriteKit. If SpriteKit had a node
 that allowed for arbitrary geometry or something like that, then perhaps some cleverness could
-be made to work. Maybe we'll get something like that soon - WWDC16 is mere days away!
+be made to work. Maybe we'll get something like that soon - WWDC16 is mere hours away!
 
 # Features
 
