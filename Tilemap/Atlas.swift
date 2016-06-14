@@ -41,13 +41,13 @@ public struct Atlas {
         let texture: SKTexture
         
         if let mask = color {
-            let img = source.atlasTexture.CGImage()
-            let (w, h) = (CGImageGetWidth(img), CGImageGetHeight(img))
-            let ctx = CGBitmapContextCreate(nil, w, h, 8, w * 4, CGColorSpaceCreateDeviceRGB(), CGImageAlphaInfo.PremultipliedLast.rawValue)
-            let pixels = UnsafeMutablePointer<Color>(CGBitmapContextGetData(ctx))
-            CGContextDrawImage(ctx, CGRect(x: 0, y: 0, width: w, height: h), img)
-            for index in 0..<(w * h) where pixels[index] == mask { pixels[index] = .clear }
-            texture = SKTexture(CGImage: CGBitmapContextCreateImage(ctx)!)
+            let img = source.atlasTexture.cgImage()
+            let (w, h) = (img.width, img.height)
+            let ctx = CGContext(data: nil, width: w, height: h, bitsPerComponent: 8, bytesPerRow: w * 4, space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)
+            let pixels = UnsafeMutablePointer<Color>(ctx?.data)
+            ctx?.draw(in: CGRect(x: 0, y: 0, width: w, height: h), image: img)
+            for index in 0..<(w * h) where pixels?[index] == mask { pixels?[index] = .clear }
+            texture = SKTexture(cgImage: (ctx?.makeImage()!)!)
         } else {
             texture = source.atlasTexture
         }

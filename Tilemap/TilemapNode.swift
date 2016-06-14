@@ -20,7 +20,7 @@ public class TilemapNode: SKSpriteNode {
         let mapSize = CGSize(width: tilemap.width, height: tilemap.height)
 
         super.init(texture: atlas.texture,
-                   color: .whiteColor(),
+                   color: .white(),
                    size: CGSize(width: atlas.tileSize.width * mapSize.width, height: atlas.tileSize.height * mapSize.height))
 
         // precomputing some things here since it's cheaper than doing it in the shader over and over
@@ -30,12 +30,12 @@ public class TilemapNode: SKSpriteNode {
         
         shader = SKShader(fileNamed: "TilemapShader.fsh")
         shader!.uniforms = [
-            SKUniform(name: "u_offset", floatVector2: GLKVector2(atlas.offset)),
-            SKUniform(name: "u_tile_size", floatVector2: GLKVector2(atlas.tileSize)),
-            SKUniform(name: "u_tile_stride", floatVector2: GLKVector2(tileStride)),
-            SKUniform(name: "u_atlas_size", floatVector2: GLKVector2(atlasSize)),
+            SKUniform(name: "u_offset", vectorFloat2: float2(atlas.offset)),
+            SKUniform(name: "u_tile_size", vectorFloat2: float2(atlas.tileSize)),
+            SKUniform(name: "u_tile_stride", vectorFloat2: float2(tileStride)),
+            SKUniform(name: "u_atlas_size", vectorFloat2: float2(atlasSize)),
             SKUniform(name: "u_atlas_columns", float: atlasColumns),
-            SKUniform(name: "u_map_size", floatVector2: GLKVector2(mapSize)),
+            SKUniform(name: "u_map_size", vectorFloat2: float2(mapSize)),
             SKUniform(name: "u_data", texture: tilemap.dataTexture),
         ]
     }
@@ -48,7 +48,7 @@ public class TilemapNode: SKSpriteNode {
     public let atlas: Atlas
 }
 
-private extension GLKVector2 {
-    init(_ size: CGSize) { self.init(v: (Float(size.width), Float(size.height))) }
-    init(_ point: CGPoint) { self.init(v: (Float(point.x), Float(point.y))) }
+private extension float2 {
+    init(_ size: CGSize) { self.init(Float(size.width), Float(size.height)) }
+    init(_ point: CGPoint) { self.init(Float(point.x), Float(point.y)) }
 }
